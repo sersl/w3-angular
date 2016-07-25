@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js">
+</script>
+
+<body>
+
+<!-- Application 1
+
+<div ng-app="">
+	<p>Name: <input type="text" ng-model="name"></input></p>
+	<p ng-bind="name"></p>
+</div>
+
+-->
+
+<!-- Application 2
+
+<div ng-app="" ng-init="firstName='John'">
+	<p>the name is <span ng-bind="firstName"></span></p>
+</div>
+
+-->
+
+<!-- Application 3
+<div ng-app="">
+	<p>My first expression: {{ 5 + 7}} </p>
+</div>
+-->
+
+<!-- Application 3
+<div ng-app="">
+	<p>Name: <input type="text" ng-model="name"></input></p>
+	<p>{{name}}</p>
+</div>
+-->
+
+<div ng-app="myApp" ng-controller="myCtrl">
+
+	First Name: <input type="text" ng-model="firstName"></input></br>
+	Last Name: <input type="text" ng-model="lastName"></input></br>
+
+</div>
+
+<script>
+var app = angular.module('myApp', []);
+
+app.controller('myCtrl', function($scope) {
+		$scope.firstName="John";
+		$scope.lastName="Doe";
+	});
+
+</script>
+
+</body>
+</html>
