@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>services</title>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+</head>
+
+<body>
+	<!-- <div ng-app="myApp" ng-controller="customersCtrl">
+		Location is: {{ myUrl }}
+	</div> -->
+
+	<!-- <script>
+		var app = angular.module('myApp', []);
+		app.controller('customersCtrl', function($scope, $location) {
+			$scope.myUrl = $location.absUrl();
+		});
+	</script> -->
+
+
+	<!-- //// learn about $http service //// -->
+	<!-- <div ng-app="myApp" ng-controller="myCtrl">
+		<p>The response after requesting 'welcome.html' is: {{ myWelcome }}</p>
+	</div> -->
+
+	<!-- <script>
+		var app = angular.module('myApp', []);
+
+		app.controller("myCtrl", function($scope, $http) {
+			$http.get("http://www.google.com").then(function (response) {
+				$scope.myWelcome = response.data;
+			});
+		});
+	</script> -->
+
+	<!-- //// $timeout service //// -->
+	<!-- <div ng-app="myApp" ng-controller="myCtrl">
+		<p>Display this message after 2 seconds: {{ myHeader }}</p>
+	</div> -->
+
+	<!-- <script>
+		var app = angular.module("myApp", []);
+		app.controller("myCtrl", function($scope, $timeout) {
+			$scope.myHeader = "Hello World!";
+			$timeout(function () {
+				$scope.myHeader = "How are you today?";
+			}, 2000);
+		});
+	</script> -->
+
+	<!-- <span> $interval service </span> -->
+
+	<!-- <div ng-app="myApp" ng-controller="myCtrl">
+			<p>Time will be increase after 1 second: {{ theTime }}</p>
+	</div> -->
+
+	<!-- <script>
+		var app = angular.module("myApp", []);
+		app.controller("myCtrl", function($scope, $interval) {
+			$scope.theTime = new Date().toLocaleTimeString();
+			$interval(function () {
+				$scope.theTime = new Date().toLocaleTimeString();
+			}, 1000);
+		});
+	</script> -->
+
+	<!-- <span> Create your own service </span> -->
+
+	<!-- <div ng-app="myApp" ng-controller="myCtrl">
+		<p> 255 in hex is: {{ hex }}</p>
+	</div> -->
+
+	<!-- <script>
+		var app = angular.module("myApp", []);
+		app.controller("myCtrl", function ($scope, hexafy) {
+			$scope.hex = hexafy.myFunc(255);
+		});
+		app.service('hexafy', function () {
+			this.myFunc = function (x) {
+				return x.toString(16);
+			}
+		});
+	</script> -->
+
+	<!-- <span> use a custom service inside a filter </span> -->
+
+	<script>
+		var app = angular.module("myApp", []);
+
+		app.controller("myCtrl", function ($scope) {
+			$scope.counts = [10, 11, 12, 13, 14, 15, 16];
+		});
+
+		app.filter('myFormat', ['hexafy', function (hexafy) {
+			return function (x) {
+				return hexafy.myFunc(x);
+			};
+		}]);
+
+		app.service('hexafy', function () {
+			this.myFunc = function (x) {
+				return x.toString(16);
+			}
+		});
+	</script>
+
+	<div ng-app="myApp" ng-controller="myCtrl">
+		<ul>
+			<li ng-repeat="x in counts">{{ x | myFormat }}</li>
+		</ul>
+	</div>
+
+</body>
+</html>
