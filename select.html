@@ -8,11 +8,18 @@
 
 <body>
 	<div ng-app="myApp" ng-controller="myCtrl">
-		<select ng-model="selectedCar">
-			<option ng-repeat="x in names">{{x}}</option>
+		<select ng-model="selectedCar" ng-options="x.model for x in cars">
 		</select>
+		<h1>You selected: {{selectedCar.model}}</h1>
+		<p>Its color is: {{selectedCar.color}}</p>
 
-		<h1>You have selected: {{ selectedCar }}</h1>
+		<select ng-model="nc" ng-options="x for (x,y) in newCars">
+		</select>
+		<h2>You selected: {{nc}}</h2>
+
+		<select ng-model="nc2" ng-options="x for (x,y) in newCars2">
+		</select>
+		<h2>You selected: {{nc2}}</h2>
 	</div>
 
 	<script>
@@ -23,6 +30,16 @@
 				{model : "Fiat 500", color : "white"},
 				{model : "Volvo XC90", color : "black"}
 			];
+			$scope.newCars = {
+				car01 : "Ford",
+				car02 : "Fiat",
+				car03 : "Volvo"
+			};
+			$scope.newCars2 = {
+				car01 : {brand: "Ford", model: "Mustang", color: "red"},
+				car02 : {brand: "Fiat", model: "500", color: "white"},
+				car03 : {brand: "Volvo", model: "XC90", color: "black"}
+			};
 		});
 	</script>
 
